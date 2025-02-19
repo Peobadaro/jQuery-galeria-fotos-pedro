@@ -77,4 +77,19 @@ $(document).ready(function () {
     // Exibir largura e altura da janela no console
     console.log("Largura:", document.documentElement.clientWidth);
     console.log("Altura:", document.documentElement.clientHeight);
+
+    // Código existente do menu dropdown
+    $('.dropdown-toggle').click(function(e) {
+        e.preventDefault();
+        const $dropdownMenu = $(this).next('.dropdown-menu');
+        $('.dropdown-menu').not($dropdownMenu).slideUp(300);
+        $dropdownMenu.slideToggle(300);
+    });
+
+    // Fechar dropdown quando clicar fora
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').slideUp(300);
+        }
+    });
 });
